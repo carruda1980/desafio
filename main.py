@@ -13,6 +13,10 @@ class Jogo:
         self.__total_jogos = total_jogos
         self.__jogos = 0
 
+        if not self._valida_dezenas(self.__quantidade_dezenas):
+            raise ValueError("valores inválidos")
+
+
     def get__resultado(self):
         return self.__resultado
 
@@ -25,10 +29,23 @@ class Jogo:
     def set__total_jogos(self, total_jogos):
         self.__total_jogos = total_jogos
 
-    def __get__sorteio_sem_repeticoes(self):
+    def get__sorteio_sem_repeticoes(self):
         return sorted(sample(range(1, 60), self.__quantidade_dezenas))
 
-    def __set__resultado_aleatorio(self):
+    def set__resultado_aleatorio(self):
         self.__resultado = sorted(sample(range(1, 60), 6))
 
+    def _valida_dezenas(self, quantidade_dezenas):
+        if quantidade_dezenas not in [6,7,8,9,10]:
+            return False
+        else:
+            return True
+
+# Instanciando a classe passando quantidade de dezenas e total de jogos como paramentro
+jogo = Jogo(6, 3)
+# Sorteio sem repetições
+print(jogo.get__sorteio_sem_repeticoes())
+jogo.set__resultado_aleatorio()
+# Resultado aleatório
+print(jogo.get__resultado())
 
