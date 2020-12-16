@@ -1,3 +1,5 @@
+from random import sample
+
 # Em Python não existe atributos privados propriamente ditos, o que existe é uma convenção
 # Tambem não se utiliza metodos getter e setters
 # Em Python existe um metodo que se nao me engano é o construct, porem é mais comum utilizar o __init__ para inicializar
@@ -22,4 +24,7 @@ class Jogo:
 
     def set__total_jogos(self, total_jogos):
         self.__total_jogos = total_jogos
+
+    def get__sorteio_sem_repeticoes(self):
+        return sorted(sample(range(1, 60), self.__quantidade_dezenas))
 
