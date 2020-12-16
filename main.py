@@ -4,6 +4,7 @@ from random import sample
 # Tambem não se utiliza metodos getter e setters
 # Em Python existe um metodo que se nao me engano é o construct, porem é mais comum utilizar o __init__ para inicializar
 # valores da classe
+# Para validar as dezenas criei um metodo retornando um ValueError caso a dezena informada nao esteja na lista
 
 
 class Jogo:
@@ -11,11 +12,10 @@ class Jogo:
         self.__quantidade_dezenas = quantidade_dezenas
         self.__resultado = 0
         self.__total_jogos = total_jogos
-        self.__jogos = 0
+        self.__jogos = 3
 
         if not self._valida_dezenas(self.__quantidade_dezenas):
             raise ValueError("valores inválidos")
-
 
     def get__resultado(self):
         return self.__resultado
@@ -41,6 +41,15 @@ class Jogo:
         else:
             return True
 
+    def array_jogos(self):
+        jogos_list = []
+        for i in range(self.__total_jogos):
+            novo = []
+            for j in range(self.__total_jogos):
+                novo.append(self.get__sorteio_sem_repeticoes())
+                jogos_list.append(novo)
+        return jogos_list
+
 # Instanciando a classe passando quantidade de dezenas e total de jogos como paramentro
 jogo = Jogo(6, 3)
 # Sorteio sem repetições
@@ -48,4 +57,5 @@ print(jogo.get__sorteio_sem_repeticoes())
 jogo.set__resultado_aleatorio()
 # Resultado aleatório
 print(jogo.get__resultado())
-
+# Array de jogos
+print(jogo.array_jogos())
