@@ -25,6 +25,10 @@ class Jogo:
     def set__total_jogos(self, total_jogos):
         self.__total_jogos = total_jogos
 
-    def get__sorteio_sem_repeticoes(self):
+    def __get__sorteio_sem_repeticoes(self):
         return sorted(sample(range(1, 60), self.__quantidade_dezenas))
+
+    def __set__resultado_aleatorio(self):
+        self.__resultado = sorted(sample(range(1, 60), 6))
+
 
