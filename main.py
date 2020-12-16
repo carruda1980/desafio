@@ -50,6 +50,7 @@ class Jogo:
                 jogos_list.append(novo)
         return jogos_list
 
+
 # Instanciando a classe passando quantidade de dezenas e total de jogos como paramentro
 jogo = Jogo(6, 3)
 # Sorteio sem repetições
@@ -59,3 +60,22 @@ jogo.set__resultado_aleatorio()
 print(jogo.get__resultado())
 # Array de jogos
 print(jogo.array_jogos())
+array_jogos = jogo.array_jogos()
+
+
+def html(array_jogos):
+    strTable = "<html><table><tr><th>Char</th><th>ASCII</th></tr>"
+
+    for num in array_jogos:
+        strRW = "<tr><td>" + str(num) + "</td><td></tr>"
+        strTable = strTable + strRW
+
+    strTable = strTable + "</table></html>"
+
+    hs = open("asciiCharHTMLTable.html", 'w')
+    hs.write(strTable)
+
+    return strTable
+
+
+print(html(array_jogos))
