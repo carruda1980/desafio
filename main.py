@@ -1,10 +1,15 @@
 # Em Python não existe atributos privados propriamente ditos, o que existe é uma convenção
 # Tambem não se utiliza metodos getter e setters
+# Em Python existe um metodo que se nao me engano é o construct, porem é mais comum utilizar o __init__ para inicializar
+# valores da classe
+
+
 class Jogo:
-    __quantidade_dezenas = [6,7,8,9]
-    __resultado = 0
-    __total_jogos = 0
-    __jogos = 0
+    def __init__(self, quantidade_dezenas, total_jogos):
+        self.__quantidade_dezenas = quantidade_dezenas
+        self.__resultado = 0
+        self.__total_jogos = total_jogos
+        self.__jogos = 0
 
     def get__resultado(self):
         return self.__resultado
